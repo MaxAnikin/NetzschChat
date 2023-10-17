@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.0-rc.2.23480.2" />
+      <PackageReference Include="RestSharp" Version="110.2.1-alpha.0.13" />
+      <PackageReference Include="Websocket.Client" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Netzsch.Client\Netzsch.Client.csproj" />
+      <ProjectReference Include="..\Netzsch.Models\Netzsch.Models.csproj" />
+    </ItemGroup>
+
+</Project>
