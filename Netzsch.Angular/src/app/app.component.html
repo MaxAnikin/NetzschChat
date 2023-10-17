@@ -1,21 +1,20 @@
-<table class="table">
-  <thead>
-  <tr>
-    <th scope="col">First</th>
-    <th scope="col">Last</th>
-  </tr>
-  </thead>
+<table>
   <tbody>
   <tr>
-    <td>Login:</td>
+    <td>Email:</td>
+    <td><input  class="form-control" name="email" [(ngModel)]="email" id="txtEmail"/></td>
+  </tr>
+  <tr>
     <td>Password:</td>
+    <td><input  class="form-control" name="password" [(ngModel)]="password" type="password"/></td>
   </tr>
   <tr>
-    <td></td>
-    <td><textarea/></td>
-  </tr>
-  <tr>
-    <th scope="row">2</th>
+    <th scope="row"><button type="button" (click)="GetMessages()">Get messages</button></th>
   </tr>
   </tbody>
 </table>
+<div><h3>Messages</h3>
+  <ul>
+    <li *ngFor="let p of messages">{{p}}</li>
+  </ul>
+</div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ChatServiceService, Message} from "./chat-service.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'netzsch-chat';
+
+  email: string = "";
+  password: string = "";
+  messages: Array<Message>[] = [];
+
+  constructor(private chatService: ChatServiceService) {
+  }
+
+  GetMessages() {
+    this.chatService.getMessages(this.email, this.password);
+  }
 }
