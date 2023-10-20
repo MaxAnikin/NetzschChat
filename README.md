@@ -1,20 +1,28 @@
 # NetzschChat
-This is a basic chat solution created as a preinterview task for Netzsch 
+This is a basic chat solution created as a preinterview task for Netzsch.
 
 Since the task description says that I am free to apply my personal assumptions I decided to implement a chat system.
 
-Solution consists from a REST api service and a WPF client. I was not able to complete web client in time unfortunately. 
-My estimates for this kind af a project were incorrect. 
-But I decided to share everything I have completed till 17.10.2023 with you.
+Solution consists from the following applications:
+ 
+ - Netzsch.Api: a REST api service 
+ - Netzsch.Wpf: a WPF client
+ - Netzsch.Angular: an Angular client
 
-In sources you will find a backend REST api project "Netzsch.Api" and WPF desktop client "Netzsch.Wpf".
-Both could be started in Visual Studio or with a simple "dotnet run" command from the command line.
+Application data is stored in the LiteDb database. It is a simple Json storage.
 
-1. Start rest api service.
-2. Start first WPF app and register user "user1@google.com". 
-3. Start second WPF app and register user "user2@google.com". 
+Build and Run:
 
-Once users are registered you can start a chat and send messages between users. 
+1. Start rest api service using "Netzsch.Api" folder terminal window:  "dotnet run --launch-profile https | start chrome https://localhost:7147/swagger" 
+or just "dotnet run" and open https://localhost:7147/swagger in order to make sure api service is up and running.
+      
+2. Start wpf client from the "Netzsch.Api" folder terminal window with command: "dotnet run"
+
+3. Start angular application from the "Netzsch.Api" folder terminal window with command: "ng serve"
+
+4. Use registration forms and create users "user1" and "user2". You can use the same value for all the fields. 
+
+5. Start messaging.
 
 Thank you for your task and your time. 
 
