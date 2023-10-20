@@ -5,6 +5,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Media;
 using System.Windows.Threading;
 using Netzsch.Client;
 using Netzsch.Models;
@@ -54,9 +56,18 @@ public partial class Chat : UserControl
         Application.Current.Dispatcher.BeginInvoke(
             DispatcherPriority.Background,
             new Action(() =>
+            {
                 lstChat.ItemsSource = messages?.Select(x =>
-                    new MessageListItem(x.CreatedDate.ToString("s"), x.FromEmail, x.ToEmail, x.Text)).ToList()
-            ));
+                        new MessageListItem(x.CreatedDate.ToString("s"), x.FromEmail, x.ToEmail, x.Text))
+                    .OrderBy(x => x.CreatedDate).ToList();
+                
+                if (VisualTreeHelper.GetChildrenCount(lstChat) > 0)
+                {
+                    Border border = (Border)VisualTreeHelper.GetChild(lstChat, 0);
+                    ScrollViewer scrollViewer = (ScrollViewer)VisualTreeHelper.GetChild(border, 0);
+                    scrollViewer.ScrollToBottom();
+                }
+            }));
     }
 
     protected override async void OnInitialized(EventArgs e)

@@ -41,7 +41,7 @@ public class MessageRepository : IMessageRepository
     public IEnumerable<Message> Get(string from, string to)
     {
         using var db = new LiteDatabase(_connectionString);
-        var messages = db.GetCollection<Message>().Query().ToList();
+        var messages = db.GetCollection<Message>().Query().OrderByDescending(x => x.CreatedDate).ToList();
         return messages.Where(x =>
             (x.FromEmail == from && x.ToEmail == to) || (x.FromEmail == to && x.ToEmail == from));
     }

@@ -23,13 +23,9 @@
                     <DataTemplate>
                         <Grid Margin="0,2">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50" />
-                                <ColumnDefinition Width="15" />
-                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="{Binding Name}" />
-                            <TextBlock Grid.Column="1" Text=" - " />
-                            <TextBlock Grid.Column="2" Text="{Binding OnlineStatus}" />
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

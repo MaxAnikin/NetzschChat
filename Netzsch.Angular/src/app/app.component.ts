@@ -1,21 +1,35 @@
-import { Component } from '@angular/core';
-import {ChatServiceService, Message} from "./chat-service.service";
+import {Component, OnInit} from '@angular/core';
+import {TokenStorageService} from "./_services/token-storage.service";
+import {Router} from "@angular/router";
+
+
+class User {
+  public email: string = "";
+  public name: string = "";
+}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
+  title: string = "Netzsch chat";
   email: string = "";
   password: string = "";
-  messages: Array<Message>[] = [];
+  error: string = "";
+  tokenStorage: TokenStorageService;
 
-  constructor(private chatService: ChatServiceService) {
+  constructor(tokenStorage: TokenStorageService, private router: Router) {
+    this.tokenStorage = tokenStorage;
   }
 
-  GetMessages() {
-    this.chatService.getMessages(this.email, this.password);
+  ngOnInit(): void {
+  }
+
+  logout() {
+    this.tokenStorage.signOut();
+    void this.router.navigate(['/login']);
   }
 }

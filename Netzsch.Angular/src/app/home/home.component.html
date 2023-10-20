@@ -1,0 +1,45 @@
+<div class="col-md-6" *ngIf="tokenStorage.isLoggedIn">
+  <div>
+    Users
+  </div>
+  <div>
+    <select [(ngModel)]="selectedUserEmail" (ngModelChange)="onUserChange()">
+      <option *ngFor="let u of users" value="{{u.email}}">{{u.name}}</option>
+    </select>
+  </div>
+
+  <div>
+    <input type="text" class="form-control" id="message" name="message" [(ngModel)]="message"/>
+  </div>
+  <div>
+    <button class="btn btn-primary btn-block" (click)="SendMessage()" >
+      Send message
+    </button>
+  </div>
+  <div>
+    <h3>Messages</h3>
+      <table>
+        <thead>
+          <tr>
+            <td>Date</td>
+            <td>From</td>
+            <td>To</td>
+            <td>Message</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of messages">
+            <td>{{p.createdDate}}</td>
+            <td>{{p.fromEmail}}</td>
+            <td>{{p.toEmail}}</td>
+            <td>{{p.text}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <div class="form-group">
+    <div class="alert alert-danger" role="alert" *ngIf="!!errorMessage">
+      Login failed: {{ errorMessage }}
+    </div>
+  </div>
+</div>
